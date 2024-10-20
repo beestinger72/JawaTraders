@@ -1,0 +1,72 @@
+
+//JF Import Carbon
+@use '@carbon/react';
+
+:root {
+  --background: #ffffff;
+  --foreground: #171717;
+    $interactive-01: #ff5733;
+    $interactive-02: #ff5733;
+    $interactive-03: #ff5733;
+    $hover-primary: #ff4500;
+    $focus: #ff4500;
+    $text-01: #ff5733;
+    $support-01: #ff5733
+}
+
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0a0a0a;
+    --foreground: #ededed;
+  }
+}
+
+html,
+body {
+  max-width: 100vw;
+  overflow-x: hidden;
+ 
+}
+
+body {
+  color: var(--foreground);
+  background: var(--background);
+  font-family: Arial, Helvetica, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+@media (prefers-color-scheme: dark) {
+  html {
+    color-scheme: dark;
+  }
+}
+
+/// JF - genric install bumf for carbon design system which is poor compared to the likes of tailwind or better still ionic
+/// Remove overrides once Carbon bugs are fixed upstream.
+/// Need grid option to not add page gutters at large viewports, to also use when nesting grids
+/// @link https://github.com/carbon-design-system/carbon/issues/2792
+@media (min-width: 42rem) {
+  .cds--grid--no-gutter {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+}
+/// Padding was introduced in 10.3.0, needs an option to let grid set the viewport gutter
+/// @link https://github.com/carbon-design-system/carbon/issues/3010
+.cds--content {
+  margin-top: 3rem;
+  background: var(--cds-background);
+}

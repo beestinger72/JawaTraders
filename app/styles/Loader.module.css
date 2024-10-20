@@ -1,0 +1,45 @@
+.loader {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /* Center horizontally */
+    justify-content: center;
+    /* Center vertically */
+    height: 100vh;
+    /* Full height of the viewport */
+}
+
+.spinner {
+    border: 8px solid #f3f3f3;
+    /* Light grey background */
+    border-top: 8px solid #3498db;
+    /* Blue color */
+    border-radius: 50%;
+    /* Make it round */
+    width: 60px;
+    /* Spinner size */
+    height: 60px;
+    /* Spinner size */
+    animation: spin 1s linear infinite;
+    /* Spinner animation */
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+/* Add a local class to the p element */
+.loadingText {
+    margin-top: 16px;
+    /* Space above the loading text */
+    font-size: 16px;
+    /* Font size for loading text */
+    color: #555;
+    /* Color for loading text */
+}

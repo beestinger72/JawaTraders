@@ -1,0 +1,154 @@
+
+/* Base Calls*/
+/* page component calls */
+.page {
+    transition: background-color 0.3s ease, color 0.3s ease;
+    padding: 20px;
+    }
+
+
+.main{
+    margin-top: 20px;
+    max-width: 1300px;
+    margin: auto;
+   
+}
+.logo {
+    display: block;
+    margin: 0 auto;
+}
+.ctas {
+    margin-top: 20px;
+}
+.header{
+     padding:20px;
+}
+
+.footer {
+    margin-top: 40px;
+    text-align: center;
+}
+
+.logoColumn {
+    display: flex;
+    align-items: center;
+
+}
+
+/* Modes*/
+
+/* Light mode  */
+.light .toggleButton {
+    background-color: transparent;
+    color: black;
+
+}
+
+.light .toggleButton:hover {
+    background-color: rgba(0, 0, 0, 0.1);
+
+}
+
+/* Dark mode */
+
+.light {
+  
+    color: black;
+}
+.light .main {
+    background: #ffffff;
+    color: black;
+}
+.dark {
+    background-color: #000;
+    color: white;
+
+}
+
+
+.dark .toggleButton {
+    background-color: rgba(255, 255, 255, 0.1);
+    color: white;
+
+}
+
+.dark .toggleButton:hover {
+    background-color: rgba(255, 255, 255, 0.3);
+
+}
+
+
+/* Buttons &  overides */
+.buy-button {
+    margin-left: 10px !important;
+}
+
+button.cds--btn.cds--btn--tertiary {
+    border-radius: 60px;
+    padding: 10px 10px 10px 10px;
+}
+.toggleButtonColumn {
+    display: flex;
+    align-items: center;
+
+}
+
+.toggleButton {
+    margin: 16px;
+    padding: 8px 16px;
+    background-color: transparent;
+    border: 1px solid currentColor;
+    cursor: pointer;
+    border-radius: 4px;
+    color: inherit;
+    transition: background-color 0.3s ease, color 0.3s ease;
+
+}
+
+
+
+
+
+
+/* Starships list */
+
+.starshipList {
+    margin: 16px;
+}
+
+.starshipItem {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    align-items: center;
+    gap: 16px;
+    padding: 8px 0;
+    border-bottom: 1px solid #e0e0e0;
+    
+}
+
+.pagination {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 16px;
+}
+
+.loading,
+.error,
+.noData {
+    margin: 16px;
+    font-size: 16px;
+    color: #555;
+}
+
+.quantityControls {
+    display: flex;
+    align-items: center;
+    margin: 10px 0
+}
+
+.quantityControls span {
+    margin: 0 10px;
+}
+
+
