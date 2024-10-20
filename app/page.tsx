@@ -22,12 +22,12 @@ export default function Home() {
   const [notificationVisible, setNotificationVisible] = useState<boolean>(false);
   const [lastAddedItem, setLastAddedItem] = useState<{ name: string; quantity: number } | null>(null);
 
-  // Function to handle showing the notification
+  // notification
   const showNotification = (item: { name: string; quantity: number }) => {
     setLastAddedItem(item);
     setNotificationVisible(true);
 
-    // Automatically hide the notification after 5 seconds (optional)
+    // Automatically hide the notification after 5 seconds 
     setTimeout(() => {
       setNotificationVisible(false);
     }, 5000);
@@ -43,7 +43,7 @@ export default function Home() {
             subtitle={`${lastAddedItem.name} - Quantity: ${lastAddedItem.quantity}`}
             kind="success"
             onClose={() => setNotificationVisible(false)}
-            style={{ marginBottom: '20px', width: '100%' }} // Full width
+            style={{ marginBottom: '20px', width: '100%' }} 
           />
         )} 
            

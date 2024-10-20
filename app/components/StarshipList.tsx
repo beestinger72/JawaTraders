@@ -4,13 +4,16 @@ import styles from '../styles/main.module.css';
 import { Grid, Row, Column, Button, Pagination, Search } from '@carbon/react';
 import Loader from './Loader';
 
-//// addd notes after
 interface StarshipListProps {
   onBuy: (item: { name: string; quantity: number }) => void; 
 }
 
 interface Starship {
   name: string;
+  model: string;
+  starship_class: string;
+  manufacturer: string;
+  cost_in_credits: string;
 }
 
 const StarshipList: React.FC<StarshipListProps> = ({ onBuy }) => {
@@ -20,8 +23,6 @@ const StarshipList: React.FC<StarshipListProps> = ({ onBuy }) => {
   const [currentPage, setCurrentPage] = useState<number>(1);
   const [totalShips, setTotalShips] = useState<number>(0);
   const [quantities, setQuantities] = useState<{ [key: number]: number }>({});
-
-
   const [searchQuery, setSearchQuery] = useState<string>("");
 
   const PAGE_SIZE = 10;
@@ -61,7 +62,6 @@ const StarshipList: React.FC<StarshipListProps> = ({ onBuy }) => {
     }
   };
 
-
   const handlePaginationChange = ({ page }: { page: number; pageSize: number }) => {
     setCurrentPage(page);
   };
@@ -76,9 +76,6 @@ const StarshipList: React.FC<StarshipListProps> = ({ onBuy }) => {
 
   return (
     <div className={styles.starshipList}>
-      <h1 className="semibold">Starships in Stock</h1>
-
-   
       <Search
         size="lg"
         placeholder="Find your spaceship"
@@ -94,23 +91,29 @@ const StarshipList: React.FC<StarshipListProps> = ({ onBuy }) => {
       />
 
       {filteredStarships.map((starship, index) => (
-        <Row key={index} className={styles.starshipRow}>
-          <Grid>
-            <Column sm={3} md={10} lg={10}>
-              <h2 className={styles.starshipItem}>{starship.name}</h2>
-            </Column>
-            <Column sm={3} md={6} lg={3}>
-              <div className={styles.quantityControls}>
-                <Button kind="tertiary" onClick={() => handleQuantityChange(index, -1)}>-</Button>
-                <span>{quantities[index] || 0}</span>
-                <Button kind="tertiary" onClick={() => handleQuantityChange(index, 1)}>+</Button>
-                <Button className="buy-button" kind="primary" onClick={() => handleBuy(starship, index)}>Buy</Button>
-              </div>
-            </Column>
-          </Grid>
-        </Row>
+        <div key={index} className={styles.card}>
+          <Row className={styles.starshipRow}>
+            <Grid>
+              <Column sm={3} md={10} lg={10}>
+                <h2 className={styles.starshipItem}>{starship.name}</h2>
+                <p className={styles.semibold}>Model: {starship.model}</p>
+                <p>Class: {starship.starship_class}</p>
+                <p>Manufacturer: {starship.manufacturer}</p>
+                <p>Cost in Credits: {starship.cost_in_credits}</p>
+              </Column>
+              <Column sm={3} md={6} lg={3}>
+                <div className={styles.quantityControls}>
+                  <Button kind="tertiary" onClick={() => handleQuantityChange(index, -1)}>-</Button>
+                  <span>{quantities[index] || 0}</span>
+                  <Button kind="tertiary" onClick={() => handleQuantityChange(index, 1)}>+</Button>
+                  <Button className={`${styles.buyButton} buy-button`} kind="primary" onClick={() => handleBuy(starship, index)}>Buy</Button>
+                </div>
+              </Column>
+            </Grid>
+          </Row>
+        </div>
       ))}
-     
+
       <Pagination
         page={currentPage}
         pageSize={PAGE_SIZE}
@@ -118,8 +121,6 @@ const StarshipList: React.FC<StarshipListProps> = ({ onBuy }) => {
         totalItems={totalShips}
         onChange={handlePaginationChange}
       />
-
-
     </div>
   );
 };

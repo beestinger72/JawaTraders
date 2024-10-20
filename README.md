@@ -24,6 +24,7 @@ This is a Single Page Application (SPA) built using **Next.js** and **TypeScript
 - [Carbon Design System](https://www.carbondesignsystem.com/) - For UI 
 - [CarbonThemes] - (https://www.npmjs.com/package/@carbon/themes) -(https://carbon-elements.netlify.app/themes/examples/preview/)
 - [SWAPI](https://swapi.dev/) - The Star Wars API for fetching data
+- [Extensions] - (https://github.com/storybookjs/storybook) - this is used in Carbon Design however this project is not currently extending thta far.
 
 ## Getting Started
 

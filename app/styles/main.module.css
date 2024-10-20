@@ -50,8 +50,6 @@
 
 }
 
-/* Dark mode */
-
 .light {
   
     color: black;
@@ -60,13 +58,27 @@
     background: #ffffff;
     color: black;
 }
+.light .starshipList {
+
+   padding:0px;
+   margin-top:20px;
+}
+
+/* Dark mode */
 .dark {
     background-color: #000;
     color: white;
 
 }
 
+.dark .starshipList {
 
+    background:transparent !important;
+}
+.dark .search {
+
+    background: rgb(22, 22, 22) !important;
+}
 .dark .toggleButton {
     background-color: rgba(255, 255, 255, 0.1);
     color: white;
@@ -78,7 +90,13 @@
     background-color: rgba(255, 255, 255, 0.3);
 
 }
-
+.dark .card {
+    border: 1px solid #f2f2f246;
+    padding: 16px;
+    margin: 10px 0;
+    background-color: #000;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
 
 /* Buttons &  overides */
 .buy-button {
@@ -114,17 +132,22 @@ button.cds--btn.cds--btn--tertiary {
 
 /* Starships list */
 
-.starshipList {
-    margin: 16px;
-}
 
+.starshipList {
+    margin-top: 20px;
+   
+}
+.starshipList .row {
+    margin-top: 20px;
+
+}
 .starshipItem {
     display: grid;
     grid-template-columns: 1fr auto;
     align-items: center;
     gap: 16px;
     padding: 8px 0;
-    border-bottom: 1px solid #e0e0e0;
+    
     
 }
 
@@ -154,3 +177,26 @@ button.cds--btn.cds--btn--tertiary {
 }
 
 
+.card {
+    border:1px solid #f2f2f2;
+    padding: 16px;
+    margin: 10px 0;
+    background-color: #fff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+.card:hover{
+    border: 1px solid #fdcdb1;
+    padding: 16px;
+    margin: 10px 0;
+    background-color: #fff;
+    box-shadow: 0 12px 14px rgba(0, 0, 0, 0.1);
+}
+.semibold {
+    font-weight: 600;
+
+}
+
+.buyButton {
+    margin-left: 10px;
+    
+}

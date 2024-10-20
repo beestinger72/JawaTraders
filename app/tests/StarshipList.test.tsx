@@ -8,7 +8,7 @@
 import { test, expect } from '@playwright/test';
 
 test('should add a starship to the cart and display it', async ({ page }) => {
-  await page.goto('http://localhost:3000'); // Change this to your app URL
+  await page.goto('http://localhost:3000'); // Change this to your app URL when testing in my case localhost
 
   // starships load
   await page.waitForSelector('text=Starships in Stock');
