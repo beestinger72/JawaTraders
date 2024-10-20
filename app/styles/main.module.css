@@ -203,11 +203,12 @@ button.cds--btn.cds--btn--tertiary {
     padding: 20px 0px 30px 0px !important;
     background-color: #fff;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    transition: opacity 3s ease-in-out;
+    transition: all 0.5s ease;
 }
 .card:hover{
-    
-    box-shadow: 0 12px 14px rgba(0, 0, 0, 0.1);
+  
+    transition: all 0.5s ease;
+    box-shadow: 0 12px 14px rgba(0, 0, 0, 0.274);
    
 }
 .semibold {
