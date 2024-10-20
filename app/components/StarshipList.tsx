@@ -88,20 +88,30 @@ const StarshipList: React.FC<StarshipListProps> = ({ onBuy }) => {
             event.preventDefault(); 
           }
         }}
+        className={`${styles.searchInput} ${styles.searchContainer}`} 
       />
-
+     
       {filteredStarships.map((starship, index) => (
         <div key={index} className={styles.card}>
           <Row className={styles.starshipRow}>
             <Grid>
-              <Column sm={3} md={10} lg={10}>
-                <h2 className={styles.starshipItem}>{starship.name}</h2>
-                <p className={styles.semibold}>Model: {starship.model}</p>
-                <p>Class: {starship.starship_class}</p>
-                <p>Manufacturer: {starship.manufacturer}</p>
-                <p>Cost in Credits: {starship.cost_in_credits}</p>
+              <Column sm={12} md={2} lg={3} className={styles.imageColumn}>
+                <img 
+                  src="https://via.placeholder.com/200" 
+                  alt={starship.name}
+                  className={styles.placeholderImage} 
+                />
               </Column>
-              <Column sm={3} md={6} lg={3}>
+              <Column sm={9} md={10} lg={8}>
+                <h2 className={styles.starshipItem}>{starship.name}</h2>
+                <div className={styles.shipdetails}>
+                  <p><span className={styles.semibold}>Model:</span> {starship.model}</p>
+                  <p><span className={styles.semibold}>Class:</span> {starship.starship_class}</p>
+                  <p><span className={styles.semibold}>Manufacturer:</span> {starship.manufacturer}</p>
+                  <p><span className={styles.semibold}>Cost in Credits: </span><span className={styles.orangetext}>{starship.cost_in_credits} wupiupi</span></p>
+                </div>
+                </Column>
+                <Column sm={9} md={10} lg={4}>
                 <div className={styles.quantityControls}>
                   <Button kind="tertiary" onClick={() => handleQuantityChange(index, -1)}>-</Button>
                   <span>{quantities[index] || 0}</span>

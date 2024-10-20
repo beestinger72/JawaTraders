@@ -1,12 +1,11 @@
 
-/* Base Calls*/
-/* page component calls */
+/****************
+ JF Base Calls
+ ***********/
 .page {
     transition: background-color 0.3s ease, color 0.3s ease;
     padding: 20px;
-    }
-
-
+}
 .main{
     margin-top: 20px;
     max-width: 1300px;
@@ -23,7 +22,6 @@
 .header{
      padding:20px;
 }
-
 .footer {
     margin-top: 40px;
     text-align: center;
@@ -34,22 +32,32 @@
     align-items: center;
 
 }
+.search-input {
+    font-size: 1.25rem;
+    height: 48px;
 
-/* Modes*/
+}
+.search-container {
+    margin-bottom: 16px;
+}
 
-/* Light mode  */
+/***************
+ Modes
+**********/
+
+/**********
+    Light mode   
+*******/
 .light .toggleButton {
     background-color: transparent;
     color: black;
     float: right;
 
 }
-
 .light .toggleButton:hover {
     background-color: rgba(0, 0, 0, 0.1);
 
 }
-
 .light {
   
     color: black;
@@ -64,13 +72,14 @@
    margin-top:20px;
 }
 
-/* Dark mode */
+/******
+    Dark mode 
+***********/
 .dark {
     background-color: #000;
     color: white;
 
 }
-
 .dark .starshipList {
 
     background:transparent !important;
@@ -85,7 +94,6 @@
     float: right;
 
 }
-
 .dark .toggleButton:hover {
     background-color: rgba(255, 255, 255, 0.3);
 
@@ -98,7 +106,16 @@
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-/* Buttons &  overides */
+/************************
+    Overriding colors for custom Utility 
+***********************/
+.orangetext {
+    color: #FF7C00;
+}
+
+/**********************
+     Buttons & Overides 
+ **********************/
 .buy-button {
     margin-left: 10px !important;
 }
@@ -110,7 +127,6 @@ button.cds--btn.cds--btn--tertiary {
 .toggleButtonColumn {
     display: flex;
     align-items: center;
-
 }
 
 .toggleButton {
@@ -125,13 +141,9 @@ button.cds--btn.cds--btn--tertiary {
 
 }
 
-
-
-
-
-
-/* Starships list */
-
+/*******************
+     Starships list 
+ ******************/
 
 .starshipList {
     margin-top: 20px;
@@ -150,14 +162,18 @@ button.cds--btn.cds--btn--tertiary {
     
     
 }
+.shipdetails{
 
+    border-top:1px solid #e1e1e1;
+    padding-top:10px;
+    margin-top:5px;
+}
 .pagination {
     display: flex;
     justify-content: space-between;
     align-items: center;
     margin-top: 16px;
 }
-
 .loading,
 .error,
 .noData {
@@ -171,31 +187,25 @@ button.cds--btn.cds--btn--tertiary {
     align-items: center;
     margin: 10px 0
 }
-
 .quantityControls span {
     margin: 0 10px;
 }
-
-
 .card {
     border:1px solid #f2f2f2;
-    padding: 16px;
     margin: 10px 0;
+    padding: 20px 0px 30px 0px !important;
     background-color: #fff;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: opacity 3s ease-in-out;
 }
 .card:hover{
-    border: 1px solid #fdcdb1;
-    padding: 16px;
-    margin: 10px 0;
-    background-color: #fff;
+    
     box-shadow: 0 12px 14px rgba(0, 0, 0, 0.1);
+   
 }
 .semibold {
     font-weight: 600;
-
 }
-
 .buyButton {
     margin-left: 10px;
     
