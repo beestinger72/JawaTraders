@@ -112,6 +112,13 @@
 .orangetext {
     color: #FF7C00;
 }
+/************************
+   Padding Utilitys
+***********************/
+
+.p3 {
+    padding: 30px !important;
+}
 
 /**********************
      Buttons & Overides 
@@ -209,4 +216,28 @@ button.cds--btn.cds--btn--tertiary {
 .buyButton {
     margin-left: 10px;
     
+}
+
+
+@media (max-width: 1800px) {
+    .logo {
+        float: left !important;
+        margin-bottom:20px;
+
+    }
+}
+
+@media (max-width: 700px) {
+    .logo {
+        float: none !important;
+        margin-bottom: 20px;
+       
+
+    }
+    .toggleButton{
+            background-color: transparent;
+            color: black;
+            float: none;
+            width: 90%;
+    }
 }

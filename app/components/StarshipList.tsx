@@ -72,7 +72,6 @@ const StarshipList: React.FC<StarshipListProps> = ({ onBuy }) => {
 
   if (loading) return <Loader />;
   if (error) return <div className={styles.error}>{error}</div>;
-  if (filteredStarships.length === 0) return <div>No starships available.</div>;
 
   return (
     <div className={styles.starshipList}>
@@ -90,39 +89,43 @@ const StarshipList: React.FC<StarshipListProps> = ({ onBuy }) => {
         }}
         className={`${styles.searchInput} ${styles.searchContainer}`} 
       />
-     
-      {filteredStarships.map((starship, index) => (
-        <div key={index} className={styles.card}>
-          <Row className={styles.starshipRow}>
-            <Grid>
-              <Column sm={12} md={2} lg={3} className={styles.imageColumn}>
-                <img 
-                  src="https://via.placeholder.com/200" 
-                  alt={starship.name}
-                  className={styles.placeholderImage} 
-                />
-              </Column>
-              <Column sm={9} md={10} lg={8}>
-                <h2 className={styles.starshipItem}>{starship.name}</h2>
-                <div className={styles.shipdetails}>
-                  <p><span className={styles.semibold}>Model:</span> {starship.model}</p>
-                  <p><span className={styles.semibold}>Class:</span> {starship.starship_class}</p>
-                  <p><span className={styles.semibold}>Manufacturer:</span> {starship.manufacturer}</p>
-                  <p><span className={styles.semibold}>Cost in Credits: </span><span className={styles.orangetext}>{starship.cost_in_credits} wupiupi</span></p>
-                </div>
+
+      {filteredStarships.length > 0 ? (
+        filteredStarships.map((starship, index) => (
+          <div key={index} className={styles.card}>
+            <Row className={styles.starshipRow}>
+              <Grid>
+                <Column sm={3} md={3} lg={3} className={styles.imageColumn}>
+                  <img 
+                    src="https://via.placeholder.com/200" 
+                    alt={starship.name}
+                    className={styles.placeholderImage} 
+                  />
                 </Column>
-                <Column sm={9} md={10} lg={4}>
-                <div className={styles.quantityControls}>
-                  <Button kind="tertiary" onClick={() => handleQuantityChange(index, -1)}>-</Button>
-                  <span>{quantities[index] || 0}</span>
-                  <Button kind="tertiary" onClick={() => handleQuantityChange(index, 1)}>+</Button>
-                  <Button className={`${styles.buyButton} buy-button`} kind="primary" onClick={() => handleBuy(starship, index)}>Buy</Button>
-                </div>
-              </Column>
-            </Grid>
-          </Row>
-        </div>
-      ))}
+                <Column sm={3} md={4} lg={8}>
+                  <h2 className={styles.starshipItem}>{starship.name}</h2>
+                  <div className={styles.shipdetails}>
+                    <p><span className={styles.semibold}>Model:</span> {starship.model}</p>
+                    <p><span className={styles.semibold}>Class:</span> {starship.starship_class}</p>
+                    <p><span className={styles.semibold}>Manufacturer:</span> {starship.manufacturer}</p>
+                    <p><span className={styles.semibold}>Cost in Credits:</span> <span className={styles.orangetext}>{starship.cost_in_credits} wupiupi</span></p>
+                  </div>
+                </Column>
+                <Column sm={3} md={3} lg={3}>
+                  <div className={styles.quantityControls}>
+                    <Button kind="tertiary" onClick={() => handleQuantityChange(index, -1)}>-</Button>
+                    <span>{quantities[index] || 0}</span>
+                    <Button kind="tertiary" onClick={() => handleQuantityChange(index, 1)}>+</Button>
+                    <Button className={`${styles.buyButton} buy-button`} kind="primary" onClick={() => handleBuy(starship, index)}>Buy</Button>
+                  </div>
+                </Column>
+              </Grid>
+            </Row>
+          </div>
+        ))
+      ) : (
+        <div className={styles.p3}> <p> Sorry no starships available in your search.</p></div>
+      )}
 
       <Pagination
         page={currentPage}

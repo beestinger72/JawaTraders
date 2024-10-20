@@ -25,6 +25,7 @@ This is a Single Page Application (SPA) built using **Next.js** and **TypeScript
 - [CarbonThemes] - (https://www.npmjs.com/package/@carbon/themes) -(https://carbon-elements.netlify.app/themes/examples/preview/)
 - [SWAPI](https://swapi.dev/) - The Star Wars API for fetching data
 - [Extensions] - (https://github.com/storybookjs/storybook) - this is used in Carbon Design however this project is not currently extending thta far.
+- [End To End Tests] - https://playwright.dev/docs/intro going end to end testing  // boot your test - yarn playwright test - Runs the end-to-end tests
 
 ## Getting Started
 

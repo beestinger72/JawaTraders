@@ -8,15 +8,16 @@ import { useTheme } from './theme/ThemeContext';
 import { InlineNotification } from '@carbon/react';
 
 const ThemeToggleButton = () => {
-  const { toggleTheme } = useTheme();
-  
+  const { toggleTheme, theme } = useTheme(); 
+
   return (
     <button onClick={toggleTheme} className={styles.toggleButton}>
-      Switch Side Of Force
+      {theme === 'dark' 
+        ? 'Toggle The Force - Embrace the Light Side' 
+        : 'Toggle The Force - Embrace your Dark Side'}
     </button>
   );
 };
-
 export default function Home() {
   const { theme } = useTheme();
   const [notificationVisible, setNotificationVisible] = useState<boolean>(false);
@@ -25,9 +26,7 @@ export default function Home() {
   // notification
   const showNotification = (item: { name: string; quantity: number }) => {
     setLastAddedItem(item);
-    setNotificationVisible(true);
-
-    // Automatically hide the notification after 5 seconds 
+    setNotificationVisible(true); 
     setTimeout(() => {
       setNotificationVisible(false);
     }, 5000);
