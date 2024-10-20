@@ -4,6 +4,7 @@ import React, { useState } from "react";
 import Image from "next/image";
 import styles from "./styles/main.module.css";
 import StarshipList from './components/StarshipList';
+import BackgroundVideo from './components/BackgroundVideo';
 import { useTheme } from './theme/ThemeContext'; 
 import { InlineNotification } from '@carbon/react';
 
@@ -18,6 +19,7 @@ const ThemeToggleButton = () => {
     </button>
   );
 };
+
 export default function Home() {
   const { theme } = useTheme();
   const [notificationVisible, setNotificationVisible] = useState<boolean>(false);
@@ -33,39 +35,37 @@ export default function Home() {
   };
 
   return (
-    
     <div className={`${styles.page} ${theme === 'dark' ? styles.dark : styles.light}`}>
-      
-       {notificationVisible && lastAddedItem && (
+      <BackgroundVideo isDarkMode={theme === 'dark'} /> {/* Ensure this is at the top */}
+
+      {notificationVisible && lastAddedItem && (
           <InlineNotification 
-            title="Ship(s)Added"
+            title="Ship(s) Added"
             subtitle={`${lastAddedItem.name} - Quantity: ${lastAddedItem.quantity}`}
             kind="success"
             onClose={() => setNotificationVisible(false)}
             style={{ marginBottom: '20px', width: '100%' }} 
           />
-        )} 
-           
-     <ThemeToggleButton />
+      )}
+
+      <ThemeToggleButton />
 
       <main className={styles.main}>
-       
-          <Image
-            className={styles.logo}
-            src={theme === 'dark' ? '/images/logo-dark.svg' : '/images/logo.png'}
-            alt="Logo"
-            width={150}
-            height={188}
-            priority
-          />
+        <Image
+          className={styles.logo}
+          src={theme === 'dark' ? '/images/logo-dark.svg' : '/images/logo.png'}
+          alt="Logo"
+          width={150}
+          height={188}
+          priority
+        />
         <section className={styles.ctas}>
           <StarshipList onBuy={showNotification} />
         </section>
-
       </main>
 
       <footer className={styles.footer}>
-     
+        {/* Footer content */}
       </footer>
     </div>
   );

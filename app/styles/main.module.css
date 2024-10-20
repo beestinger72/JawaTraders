@@ -68,7 +68,7 @@
     
 }
 .light .main {
-    background: #ffffff;
+
     color: black;
 }
 .light .starshipList {
@@ -205,7 +205,7 @@ button.cds--btn.cds--btn--tertiary {
 .card {
     border:1px solid #f2f2f2;
     margin: 10px 0;
-    padding: 20px 0px 30px 0px !important;
+    padding: 40px 0px 40px 0px !important;
     background-color: #fff;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     transition: all 0.5s ease;
@@ -224,7 +224,10 @@ button.cds--btn.cds--btn--tertiary {
     
 }
 
+.search {
 
+    border: 1px solid #e1e1e1;
+}
 @media (max-width: 1800px) {
     .logo {
         float: left !important;
