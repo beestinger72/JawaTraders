@@ -9,7 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@carbon/react": "1.33.0",
+    "@carbon/react": "^1.68.0",
     "axois": "^0.0.1-security",
     "carbon-components": "^10.58.15",
     "carbon-components-react": "^8.67.0",
@@ -22,6 +22,7 @@
     "sass": "1.63.6"
   },
   "devDependencies": {
+    "@playwright/test": "^1.48.1",
     "@testing-library/jest-dom": "^6.6.2",
     "@testing-library/react": "^16.0.1",
     "@types/axios": "^0.14.0",

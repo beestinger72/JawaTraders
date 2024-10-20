@@ -76,7 +76,7 @@ const StarshipList: React.FC<StarshipListProps> = ({ onBuy }) => {
 
   return (
     <div className={styles.starshipList}>
-      <h1>Starships in Stock</h1>
+      <h1 className="semibold">Starships in Stock</h1>
 
    
       <Search
@@ -99,7 +99,7 @@ const StarshipList: React.FC<StarshipListProps> = ({ onBuy }) => {
             <Column sm={3} md={10} lg={10}>
               <h2 className={styles.starshipItem}>{starship.name}</h2>
             </Column>
-            <Column sm={6} md={6} lg={3}>
+            <Column sm={3} md={6} lg={3}>
               <div className={styles.quantityControls}>
                 <Button kind="tertiary" onClick={() => handleQuantityChange(index, -1)}>-</Button>
                 <span>{quantities[index] || 0}</span>
