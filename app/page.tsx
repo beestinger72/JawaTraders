@@ -34,9 +34,10 @@ export default function Home() {
   };
 
   return (
+    
     <div className={`${styles.page} ${theme === 'dark' ? styles.dark : styles.light}`}>
-   {/* Inline Notification */}
-        {notificationVisible && lastAddedItem && (
+      
+       {notificationVisible && lastAddedItem && (
           <InlineNotification 
             title="Ship(s)Added"
             subtitle={`${lastAddedItem.name} - Quantity: ${lastAddedItem.quantity}`}
@@ -44,8 +45,12 @@ export default function Home() {
             onClose={() => setNotificationVisible(false)}
             style={{ marginBottom: '20px', width: '100%' }} // Full width
           />
-        )}
+        )} 
+           
+     <ThemeToggleButton />
+
       <main className={styles.main}>
+       
           <Image
             className={styles.logo}
             src={theme === 'dark' ? '/images/logo-dark.svg' : '/images/logo.png'}
@@ -54,18 +59,14 @@ export default function Home() {
             height={188}
             priority
           />
-
-        <ThemeToggleButton />
-
-      
-
         <section className={styles.ctas}>
           <StarshipList onBuy={showNotification} />
         </section>
+
       </main>
 
       <footer className={styles.footer}>
-        {/* Footer content */}
+     
       </footer>
     </div>
   );
