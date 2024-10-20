@@ -61,6 +61,11 @@
 .light {
   
     color: black;
+    /* background-image: url(/images/background.jpg);
+    background-position: bottom;
+    background-repeat: none !important; */
+ 
+    
 }
 .light .main {
     background: #ffffff;

@@ -16,6 +16,52 @@ interface Starship {
   cost_in_credits: string;
 }
 
+const starshipImages: { [key: string]: string } = {
+  "CR90 corvette": "https://starwars-visualguide.com/assets/img/starships/2.jpg",
+  "Star Destroyer": "https://starwars-visualguide.com/assets/img/starships/3.jpg",
+  "Sentinel-class landing craft": "https://starwars-visualguide.com/assets/img/starships/5.jpg",
+  "Imperial shuttle": "https://starwars-visualguide.com/assets/img/starships/6.jpg",
+  "Slave 1": "https://starwars-visualguide.com/assets/img/starships/21.jpg",
+  "Imperial Speeder Bike": "https://starwars-visualguide.com/assets/img/starships/9.jpg",
+  "A-wing": "https://starwars-visualguide.com/assets/img/starships/12.jpg",
+  "B-wing": "https://starwars-visualguide.com/assets/img/starships/13.jpg",
+  "Y-wing": "https://starwars-visualguide.com/assets/img/starships/11.jpg",
+  "X-wing": "https://starwars-visualguide.com/assets/img/starships/12.jpg",
+  "TIE Advanced x1": "https://starwars-visualguide.com/assets/img/starships/15.jpg",
+  "TIE fighter": "https://starwars-visualguide.com/assets/img/starships/14.jpg",
+  "TIE interceptor": "https://starwars-visualguide.com/assets/img/starships/16.jpg",
+  "Millennium Falcon": "https://starwars-visualguide.com/assets/img/starships/21.jpg",
+  "E-wing": "https://starwars-visualguide.com/assets/img/starships/20.jpg",
+  "A-wings": "https://starwars-visualguide.com/assets/img/starships/12.jpg",
+  "B-wings": "https://starwars-visualguide.com/assets/img/starships/13.jpg",
+  "C-3PO": "https://starwars-visualguide.com/assets/img/starships/24.jpg",
+  "Droid Starfighter": "https://starwars-visualguide.com/assets/img/starships/19.jpg",
+  "Naboo N-1 Starfighter": "https://starwars-visualguide.com/assets/img/starships/22.jpg",
+  "J-type diplomatic barge": "https://starwars-visualguide.com/assets/img/starships/23.jpg",
+  "B-wing Starfighter": "https://starwars-visualguide.com/assets/img/starships/13.jpg",
+  "Vulture Droid": "https://starwars-visualguide.com/assets/img/starships/17.jpg",
+  "Sith Infiltrator": "https://starwars-visualguide.com/assets/img/starships/18.jpg",
+  "Naboo Starfighter": "https://starwars-visualguide.com/assets/img/starships/22.jpg",
+  "Droid Control Ship": "https://starwars-visualguide.com/assets/img/starships/19.jpg",
+  "Sith Speeder": "https://starwars-visualguide.com/assets/img/starships/20.jpg",
+  "Bounty Hunter Ship": "https://starwars-visualguide.com/assets/img/starships/25.jpg",
+  "Death Star": "https://starwars-visualguide.com/assets/img/starships/27.jpg",
+  "Geonosian Starfighter": "https://starwars-visualguide.com/assets/img/starships/29.jpg",
+  "Imperial Landing Craft": "https://starwars-visualguide.com/assets/img/starships/28.jpg",
+  "C-9979 landing craft": "https://starwars-visualguide.com/assets/img/starships/30.jpg",
+  "Imperial Shuttle": "https://starwars-visualguide.com/assets/img/starships/6.jpg",
+  "Sith Cruiser": "https://starwars-visualguide.com/assets/img/starships/31.jpg",
+  "Ebon Hawk": "https://starwars-visualguide.com/assets/img/starships/32.jpg",
+  "Star Destroyer 2": "https://starwars-visualguide.com/assets/img/starships/33.jpg",
+  "Moldy Crow": "https://starwars-visualguide.com/assets/img/starships/34.jpg",
+  "Ghost": "https://starwars-visualguide.com/assets/img/starships/35.jpg",
+  "The Ghost": "https://starwars-visualguide.com/assets/img/starships/36.jpg",
+};
+
+const getStarshipImage = (starshipName: string) => {
+  return starshipImages[starshipName] || "https://via.placeholder.com/200"; // Fallback image
+};
+
 const StarshipList: React.FC<StarshipListProps> = ({ onBuy }) => {
   const [starships, setStarships] = useState<Starship[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
@@ -70,6 +116,10 @@ const StarshipList: React.FC<StarshipListProps> = ({ onBuy }) => {
     starship.name.toLowerCase().includes(searchQuery.toLowerCase())
   );
 
+  const handleImageError = (event: React.SyntheticEvent<HTMLImageElement, Event>) => {
+    event.currentTarget.src = "https://via.placeholder.com/200"; // Set fallback image 
+  };
+
   if (loading) return <Loader />;
   if (error) return <div className={styles.error}>{error}</div>;
 
@@ -92,14 +142,17 @@ const StarshipList: React.FC<StarshipListProps> = ({ onBuy }) => {
 
       {filteredStarships.length > 0 ? (
         filteredStarships.map((starship, index) => (
-          <div key={index} className={styles.card}>
+          <div key={starship.name} className={styles.card}> 
             <Row className={styles.starshipRow}>
               <Grid>
                 <Column sm={3} md={3} lg={3} className={styles.imageColumn}>
                   <img 
-                    src="https://via.placeholder.com/200" 
+                    src={getStarshipImage(starship.name)} 
                     alt={starship.name}
-                    className={styles.placeholderImage} 
+                    width={200}
+                    height={200}
+                    className={styles.placeholderImage}
+                    onError={handleImageError}
                   />
                 </Column>
                 <Column sm={3} md={4} lg={8}>
@@ -124,7 +177,7 @@ const StarshipList: React.FC<StarshipListProps> = ({ onBuy }) => {
           </div>
         ))
       ) : (
-        <div className={styles.p3}> <p> Sorry no starships available in your search.</p></div>
+        <div className={styles.p3}><p> Sorry no starships available in your search.</p></div>
       )}
 
       <Pagination
