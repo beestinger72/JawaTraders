@@ -235,6 +235,21 @@ button.cds--btn.cds--btn--tertiary {
 
     border: 1px solid #e1e1e1;
 }
+/*******************
+    notification bar
+ ******************/
+.stickyNotification {
+    position: fixed !important;
+    bottom: 20px !important;
+    right: 20px !important;
+    z-index: 9999 !important;
+    width: 300px !important;
+
+}
+
+/*******************
+   Responsive calls
+ ******************/
 @media (max-width: 1800px) {
     .logo {
         float: left !important;

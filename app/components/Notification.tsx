@@ -20,6 +20,8 @@ const Notification: React.FC<NotificationProps> = ({ title, subtitle, onClose })
       lowContrast={false}
       onClose={onClose}
       style={{ width: '100%' }} 
+      
+      
     />
   );
 };

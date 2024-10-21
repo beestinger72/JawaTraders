@@ -46,7 +46,7 @@ export default function Home() {
             subtitle={`${lastAddedItem.name} - Quantity: ${lastAddedItem.quantity}`}
             kind="success"
             onClose={() => setNotificationVisible(false)}
-            style={{ marginBottom: '20px', width: '100%' }} 
+            className={styles.stickyNotification}
           />
       )}
 
