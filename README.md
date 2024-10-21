@@ -73,4 +73,5 @@ or View live at (https://jawa-traders.vercel.app)
 
 ### Notes
 
-- 48hrs on weekend - There are some discrepancies in mobile mode due to learning carbon system on the fly in less that 10 hours building everything else up form scratch im aware of, normally i would add a tone of interactive animation and use well a better component library then extend/customise to be honest.. cross browser check and then would extend the unit testing/ enduser testing hook upto browserstack and automate.
+- 48hrs on weekend - There are some discrepancies in mobile mode due to learning carbon system on the fly in less that 10 hours building everything else up form scratch im aware of, normally i would add a tone of interactive animation and use well a better component library then extend/customise to be honest.. cross browser check and then would extend the unit testing/ enduser testing hook upto browserstack and automate - also i would have loved to animate the svg logo no time left sorry.
+

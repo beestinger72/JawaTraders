@@ -45,3 +45,7 @@
     z-index: 0;
   
 }
+.darkOverlay {
+    background-color: rgba(0, 0, 0, 0.836);
+  
+}
