@@ -1,5 +1,5 @@
 
-//JF Import Carbon
+//JF Import Carbon - top level overides and controls
 @use '@carbon/react';
 
 :root {
@@ -15,6 +15,7 @@
   --cds-focus: #d37924 !important;
   --cds-button-primary-active:#d37924 !important;
   --cds-button-primary-hover:#eba05a !important;
+  --cds-text-placeholder: rgb(13, 13, 13) !important;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -48,6 +49,14 @@ body {
 a {
   color: inherit;
   text-decoration: none;
+}
+.cds--search--lg {
+  border: 3px solid orange !important;
+  background:var(--cds-button-tertiary);
+}
+.cds--search-input{
+  border-block-end: transparent !important;
+  background:#fff !important;
 }
 
 @media (prefers-color-scheme: dark) {

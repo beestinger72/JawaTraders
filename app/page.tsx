@@ -8,6 +8,7 @@ import BackgroundVideo from './components/BackgroundVideo';
 import { useTheme } from './theme/ThemeContext'; 
 import { InlineNotification } from '@carbon/react';
 
+//JF - Theme switcher
 const ThemeToggleButton = () => {
   const { toggleTheme, theme } = useTheme(); 
 
@@ -25,7 +26,7 @@ export default function Home() {
   const [notificationVisible, setNotificationVisible] = useState<boolean>(false);
   const [lastAddedItem, setLastAddedItem] = useState<{ name: string; quantity: number } | null>(null);
 
-  // notification
+  //JF notification get data 
   const showNotification = (item: { name: string; quantity: number }) => {
     setLastAddedItem(item);
     setNotificationVisible(true); 
@@ -36,7 +37,8 @@ export default function Home() {
 
   return (
     <div className={`${styles.page} ${theme === 'dark' ? styles.dark : styles.light}`}>
-      <BackgroundVideo isDarkMode={theme === 'dark'} /> {/* Ensure this is at the top */}
+    
+      <BackgroundVideo isDarkMode={theme === 'dark'} /> 
 
       {notificationVisible && lastAddedItem && (
           <InlineNotification 
@@ -53,7 +55,7 @@ export default function Home() {
       <main className={styles.main}>
         <Image
           className={styles.logo}
-          src={theme === 'dark' ? '/images/logo-dark.svg' : '/images/logo.png'}
+          src={theme === 'dark' ? '/images/logo-dark.svg' : '/images/logo.svg'}
           alt="Logo"
           width={150}
           height={188}
@@ -65,7 +67,7 @@ export default function Home() {
       </main>
 
       <footer className={styles.footer}>
-        {/* Footer content */}
+    
       </footer>
     </div>
   );

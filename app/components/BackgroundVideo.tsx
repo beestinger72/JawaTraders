@@ -2,10 +2,11 @@
 import React, { useEffect, useState } from "react";
 import styles from "../styles/BackgroundVideo.module.css";
 
+//model
 interface BackgroundVideoProps {
   isDarkMode: boolean;
 }
-
+// JF - Bacground video exeprimental should really be animated svg on one run - reused some code from before here
 const BackgroundVideo: React.FC<BackgroundVideoProps> = ({ isDarkMode }) => {
   const [isMobile, setIsMobile] = useState<boolean>(false);
 
@@ -43,7 +44,7 @@ const BackgroundVideo: React.FC<BackgroundVideoProps> = ({ isDarkMode }) => {
         </video>
       )}
 
-      {/* Fallback */}
+      {/* Fallback no comment in mobile mode */}
       {isMobile && (
        <></>
       )}

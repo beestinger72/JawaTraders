@@ -33,12 +33,18 @@
 
 }
 .search-input {
-    font-size: 1.25rem;
+    font-size: 2.25rem;
     height: 48px;
 
 }
 .search-container {
     margin-bottom: 16px;
+}
+
+#search-1 input {
+  
+    background-color: #fff !important;
+    border: 3px solid orange !important;
 }
 
 /***************
@@ -83,6 +89,7 @@
 .dark {
     background-color: #000;
     color: white;
+    height:100vh;
 
 }
 .dark .starshipList {

@@ -7,7 +7,7 @@ import Loader from './Loader';
 interface StarshipListProps {
   onBuy: (item: { name: string; quantity: number }) => void; 
 }
-
+//JF - Models & Temp Image Data till can create matched feed using regex
 interface Starship {
   name: string;
   model: string;
@@ -15,10 +15,10 @@ interface Starship {
   manufacturer: string;
   cost_in_credits: string;
 }
-
+//JF - images https://starwars-visualguide.com/
 const starshipImages: { [key: string]: string } = {
-  "CR90 corvette": "https://starwars-visualguide.com/assets/img/starships/2.jpg",
-  "Star Destroyer": "https://starwars-visualguide.com/assets/img/starships/3.jpg",
+  "CR90 corvette": "https://starwars-visualguide.com/assets/img/vehicles/14.jpg",
+  "Star Destroyer": "https://starwars-visualguide.com/assets/img/big-placeholder.jpg",
   "Sentinel-class landing craft": "https://starwars-visualguide.com/assets/img/starships/5.jpg",
   "Imperial shuttle": "https://starwars-visualguide.com/assets/img/starships/6.jpg",
   "Slave 1": "https://starwars-visualguide.com/assets/img/starships/21.jpg",
@@ -27,10 +27,11 @@ const starshipImages: { [key: string]: string } = {
   "B-wing": "https://starwars-visualguide.com/assets/img/starships/13.jpg",
   "Y-wing": "https://starwars-visualguide.com/assets/img/starships/11.jpg",
   "X-wing": "https://starwars-visualguide.com/assets/img/starships/12.jpg",
-  "TIE Advanced x1": "https://starwars-visualguide.com/assets/img/starships/15.jpg",
+  "TIE Advanced x1": "https://starwars-visualguide.com/assets/img/starships/13.jpg",
+    "Executor": "https://starwars-visualguide.com/assets/img/starships/15.jpg",
   "TIE fighter": "https://starwars-visualguide.com/assets/img/starships/14.jpg",
   "TIE interceptor": "https://starwars-visualguide.com/assets/img/starships/16.jpg",
-  "Millennium Falcon": "https://starwars-visualguide.com/assets/img/starships/21.jpg",
+  "Millennium Falcon": "https://starwars-visualguide.com/assets/img/starships/10.jpg",
   "E-wing": "https://starwars-visualguide.com/assets/img/starships/20.jpg",
   "A-wings": "https://starwars-visualguide.com/assets/img/starships/12.jpg",
   "B-wings": "https://starwars-visualguide.com/assets/img/starships/13.jpg",
@@ -45,7 +46,7 @@ const starshipImages: { [key: string]: string } = {
   "Droid Control Ship": "https://starwars-visualguide.com/assets/img/starships/19.jpg",
   "Sith Speeder": "https://starwars-visualguide.com/assets/img/starships/20.jpg",
   "Bounty Hunter Ship": "https://starwars-visualguide.com/assets/img/starships/25.jpg",
-  "Death Star": "https://starwars-visualguide.com/assets/img/starships/27.jpg",
+  "Death Star": "https://starwars-visualguide.com/assets/img/starships/9.jpg",
   "Geonosian Starfighter": "https://starwars-visualguide.com/assets/img/starships/29.jpg",
   "Imperial Landing Craft": "https://starwars-visualguide.com/assets/img/starships/28.jpg",
   "C-9979 landing craft": "https://starwars-visualguide.com/assets/img/starships/30.jpg",
@@ -57,12 +58,15 @@ const starshipImages: { [key: string]: string } = {
   "Ghost": "https://starwars-visualguide.com/assets/img/starships/35.jpg",
   "The Ghost": "https://starwars-visualguide.com/assets/img/starships/36.jpg",
 };
-
+//JF Fallback image - some of the libary of images is missing its images
 const getStarshipImage = (starshipName: string) => {
-  return starshipImages[starshipName] || "https://via.placeholder.com/200"; // Fallback image
+  return starshipImages[starshipName] || "https://starwars-visualguide.com/assets/img/big-placeholder.jpg"; 
 };
 
+//JF Pass Vars and props setup constants or lets can be passed from parent paages and fed down for example another application ive written i pulled the data above this and centralised not needed for this small project.
 const StarshipList: React.FC<StarshipListProps> = ({ onBuy }) => {
+
+  //Store arrays/vars  
   const [starships, setStarships] = useState<Starship[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
@@ -73,15 +77,17 @@ const StarshipList: React.FC<StarshipListProps> = ({ onBuy }) => {
 
   const PAGE_SIZE = 10;
   const PAGE_SIZES = [10];
-
+  //JF Get data using the Axios libary and hooks like useState get data and state.. etc including fallbacks ( thank god its stongly typed i dont have to go around everywhere panicing about undefinded or null data returns well minimal)
   useEffect(() => {
     const fetchStarships = async () => {
-      setLoading(true);
+      setLoading(true); // bool for loader using core lib
       try {
+
         const { data } = await axios.get(`${process.env.NEXT_PUBLIC_API_BASE_URL}/starships/?page=${currentPage}`);
         setTotalShips(data?.count || 0);
         setStarships(data?.results || []);
         setError(null);
+
       } catch (err) {
         console.error("Failed to fetch starships:", err);
         setError("Failed to fetch starships. Please try again later.");
@@ -91,14 +97,15 @@ const StarshipList: React.FC<StarshipListProps> = ({ onBuy }) => {
 
     fetchStarships();
   }, [currentPage]);
-
+  //JF quanity change with or and index and ensure that the new quantity is always greater than
   const handleQuantityChange = (index: number, change: number) => {
     setQuantities(prevQuantities => {
       const newQuantity = (prevQuantities[index] || 0) + change;
+     
       return { ...prevQuantities, [index]: Math.max(0, newQuantity) };
     });
   };
-
+  //JF if we were to take this cart further i would save the state in localstorage or better still session cookie and database. for returning customers that left items in there cart or for us to send email after certain time left - usefull marketing 
   const handleBuy = (starship: Starship, index: number) => {
     const quantity = quantities[index] || 0;
     if (quantity > 0) {
@@ -111,18 +118,19 @@ const StarshipList: React.FC<StarshipListProps> = ({ onBuy }) => {
   const handlePaginationChange = ({ page }: { page: number; pageSize: number }) => {
     setCurrentPage(page);
   };
-
+ /// JF Search functunality and match case
   const filteredStarships = starships.filter(starship =>
     starship.name.toLowerCase().includes(searchQuery.toLowerCase())
   );
-
+  //JF Set fallback image 
   const handleImageError = (event: React.SyntheticEvent<HTMLImageElement, Event>) => {
-    event.currentTarget.src = "https://via.placeholder.com/200"; // Set fallback image 
+    event.currentTarget.src = "https://via.placeholder.com/200"; 
   };
 
+// JF - stepout return cases - your ifs in functions in c# your ifs and trys and catchs
   if (loading) return <Loader />;
   if (error) return <div className={styles.error}>{error}</div>;
-
+// JF - Start main page return - should have used next/image mistake there for fater loading and precompile img still works mind not best practice as a speed race in night expect some flaws we can refactor after.
   return (
     <div className={styles.starshipList}>
       <Search
@@ -146,6 +154,7 @@ const StarshipList: React.FC<StarshipListProps> = ({ onBuy }) => {
             <Row className={styles.starshipRow}>
               <Grid>
                 <Column sm={3} md={3} lg={3} className={styles.imageColumn}>
+              
                   <img 
                     src={getStarshipImage(starship.name)} 
                     alt={starship.name}
@@ -179,7 +188,7 @@ const StarshipList: React.FC<StarshipListProps> = ({ onBuy }) => {
       ) : (
         <div className={styles.p3}><p> Sorry no starships available in your search.</p></div>
       )}
-
+    
       <Pagination
         page={currentPage}
         pageSize={PAGE_SIZE}
